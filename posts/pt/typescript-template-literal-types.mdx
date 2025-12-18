@@ -1,0 +1,75 @@
+---
+title: 'TypeScript - Template Literal Types'
+publishedTime: '2023-07-07T07:30:51Z'
+modifiedTime: '2024-07-07T21:08:51Z'
+description: 'Template Literal Types é um bglh insano que expande as possibilidades do que já era possível com o string literals + unions do TS, dá uma olhada! Ele tem a mesma sintaxe do template literal string do JavaScript.'
+image:
+  {
+    src: 'typescript-template-literal-types.png',
+    placeholder: 'typescript-template-literal-types-small.png',
+    type: 'image/png',
+  }
+tags: ['typescript', 'utilities', 'types', 'learning']
+href: '/blog/typescript-template-literal-types'
+reactionsLength: 0
+commentsLength: 0
+---
+
+## O que é Template Literal Types?
+
+**Template Literal Types** é um bglh insano que expande as possibilidades do que já era possível com o `string literals + unions` do TS, dá uma olhada!
+
+Ele tem a mesma sintaxe do template literal string do JavaScript.
+
+```ts
+type Tchau = 'tchau!'
+
+type Salve = `Oi ${Tchau}`
+```
+
+Com ele é possivel usar sua necessidade + imaginação pra fazer diversas coisas bacanas que vão agregar muito no seu projeto/type.
+
+Um exemplo bacana seria padronizar que todas as propriedades extras que adicionarmos à um type, necessitem de ter o prefixo "data\_" e o suffixo "\_prop", assim conseguimos criar um objeto com um padrão que vai facilitar o consumo de leitura para sabermos quais as propriedades extras que foram enviadas.
+
+Falar é fácil, mas cadê o exemplo? vamos começar criando um type EventData, ele é a nossa base para nosso objeto evento de evento.
+
+```ts
+type EventData = {
+  id: string
+  name: string
+  step: 'first_step' | 'second_step'
+}
+```
+
+Ele já possui propriedades definidas, que não podem ser alteradas, mas agora precisamos enviar mais alguns campos relacionados aos fields que ele tem em cada step, poderiamos extender o type EventData e adicionar os campos, mas ao invés disso, bora usar o Template Literal Types!
+
+```ts
+type FormFields = {
+  name: string
+  age: number
+}
+
+type EventDataExtraProps<T> = `field_${string & keyof T}`
+// aqui vamos modificar um pouco o EventData
+type EventData<T> = {
+  id: string
+  name: string
+  step: 'first_step' | 'second_step'
+} & Record<EventDataExtraProps<T>, any>
+
+const event: EventData<FormFields> = {
+  id: 'sextou?',
+  name: 'thayto',
+  step: 'first_step',
+  field_name: 'full_name',
+  field_age: 22,
+}
+```
+
+Parece complexo, mas é bem simples, em projetos grandes / libs, com um único utilitário desses, conseguimos fazer mágica nos auto_completes e na padronização do envio de determinadas propriedades!
+
+Espero que tenham aprendido algo, se não aprendeu, pelo menos leu até o final, tmj!
+
+https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html
+
+![imagem te chamando de burro se você ainda não conhece o template literal types](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/12fb3fct25e3hcwbhr9d.png)
