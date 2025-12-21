@@ -4,7 +4,6 @@ import { getPosts } from '@/utils/mdx'
 import { SITE_URL } from '@/utils/constants'
 import { BlogContent } from './blog-content'
 import { Suspense } from 'react'
-import { getTranslations } from 'next-intl/server'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -12,14 +11,13 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'metadata.blog' })
 
   const canonicalUrl =
     locale === 'pt' ? 'https://thayto.com/blog' : 'https://thayto.com/en/blog'
 
   return {
-    title: t('title'),
-    description: t('description'),
+    title: 'title',
+    description: 'description',
     alternates: {
       canonical: canonicalUrl,
       languages: {
@@ -29,8 +27,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       url: canonicalUrl,
-      title: t('title'),
-      description: t('description'),
+      title: 'title',
+      description: 'description',
       locale: locale === 'pt' ? 'pt_BR' : 'en_US',
       alternateLocale: locale === 'pt' ? 'en_US' : 'pt_BR',
       images: [
@@ -52,16 +50,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Blog({ params }: Props) {
   const { locale } = await params
   const posts = getPosts(locale)
-  const t = await getTranslations({ locale, namespace: 'metadata.blog' })
 
   const blogUrl = locale === 'pt' ? '/blog' : '/en/blog'
 
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
-    name: t('title'),
+    name: 'title',
     url: `${SITE_URL}${blogUrl}`,
-    description: t('description'),
+    description: 'description',
     inLanguage: locale === 'pt' ? 'pt-BR' : 'en-US',
     publisher: {
       '@type': 'Person',
@@ -69,7 +66,7 @@ export default async function Blog({ params }: Props) {
       url: 'https://thayto.com',
       image: {
         '@type': 'ImageObject',
-        url: 'https://thayto.com/static/images/profile.jpg',
+        url: 'https://thayto.com/static/images/profile.png',
         width: 460,
         height: 460,
       },
@@ -90,13 +87,13 @@ export default async function Blog({ params }: Props) {
         '@type': 'Person',
         name: 'Rafael Thayto',
         jobTitle: 'Senior Software Engineer',
-        url: `${SITE_URL}/static/images/profile.jpg`,
+        url: `${SITE_URL}/static/images/profile.png`,
       },
       publisher: {
         '@type': 'Person',
         name: 'Rafael Thayto',
         jobTitle: 'Senior Software Engineer',
-        url: `${SITE_URL}/static/images/profile.jpg`,
+        url: `${SITE_URL}/static/images/profile.png`,
       },
       url: `${SITE_URL}${data.href}`,
     })),

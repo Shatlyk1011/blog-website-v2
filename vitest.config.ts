@@ -18,7 +18,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@/i18n/routing': path.resolve(__dirname, './test/mocks/i18n-routing.ts'),
       'next/navigation': path.resolve(
         __dirname,
         './test/mocks/next-navigation.ts',

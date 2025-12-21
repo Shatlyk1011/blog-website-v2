@@ -184,7 +184,7 @@ export function LinktreeContent() {
 
               <div className="relative w-full h-full bg-slate-50 dark:bg-black rounded-full p-0.5">
                 <Image
-                  src="/static/images/profile.jpg"
+                  src="/static/images/profile.png"
                   alt="Thayto's profile picture"
                   fill
                   priority

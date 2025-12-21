@@ -5,6 +5,9 @@ import { GOOGLE_SITE_VERIFICATION } from '@/lib/google-site-verification'
 import { Providers } from './providers'
 import { Analytics } from './analytics'
 
+import siteMetadata from './siteMetadata'
+
+
 import '@/styles/blog.css'
 import '@/styles/globals.css'
 import '@/styles/styles.css'
@@ -24,7 +27,7 @@ const lora = Lora({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://thayto.com'),
+  metadataBase: new URL(siteMetadata.siteUrl),
   robots: 'index follow',
   verification: {
     google: GOOGLE_SITE_VERIFICATION,
@@ -35,9 +38,7 @@ export const metadata: Metadata = {
   alternates: {
     types: {
       'application/rss+xml': [
-        { url: 'https://thayto.com/rss.xml', title: 'RSS Feed (Português)' },
-        { url: 'https://thayto.com/rss-pt.xml', title: 'RSS Feed - Português' },
-        { url: 'https://thayto.com/rss-en.xml', title: 'RSS Feed - English' },
+        { url: `${siteMetadata.siteUrl}/rss-en.xml`, title: 'RSS Feed - English' },
       ],
     },
   },

@@ -13,15 +13,13 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
-import { useTranslations, useLocale } from 'next-intl'
 
 interface HomeContentProps {
   posts: Post[]
 }
 
 export function HomeContent({ posts }: HomeContentProps) {
-  const t = useTranslations('home')
-  const locale = useLocale()
+
   const [showAnimation, setShowAnimation] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
   const [showConfetti, setShowConfetti] = useState(false)
@@ -83,8 +81,8 @@ export function HomeContent({ posts }: HomeContentProps) {
 
           <div className="relative w-full h-full bg-neutral-50 dark:bg-black rounded-full p-0.5">
             <Image
-              src="/static/images/profile.jpg"
-              alt="Thayto's profile picture"
+              src="/static/images/profile.png"
+              alt="Shatlyks's profile picture"
               fill
               priority
               className={`rounded-full object-cover transition-transform duration-300 ${
@@ -95,40 +93,40 @@ export function HomeContent({ posts }: HomeContentProps) {
         </div>
         <div className="sm:ml-6 mt-4 sm:mt-0 flex justify-center flex-col">
           <h1 className="text-2xl text-gray-900 dark:text-white font-bold">
-            {t('title')}
+            Home
           </h1>
           <h2 className="text-xl text-gray-500 dark:text-gray-300 font-light">
-            {t('subtitle')}
+            Senior Software Engineer
           </h2>
         </div>
       </div>
 
       <section className="text-sm font-normal font-sans mt-6 flex flex-col gap-4 text-gray-700 dark:text-gray-200">
-        <p>{t('greeting')}</p>
+        {/* <p>{t('greeting')}</p> */}
         <p>
-          {t('bio.intro', { years })}{' '}
+          I currently have over {years} years of experience as a developer
           <Tooltip>
             <TooltipTrigger asChild>
               <span className="underline cursor-help">
-                {t('bio.companies')}
+                large companies
               </span>
             </TooltipTrigger>
             <TooltipContent>
-              <p>{t('bio.companiesDetail')}</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex quaerat magni magnam nam porro minus corrupti atque itaque voluptatem?</p>
             </TooltipContent>
           </Tooltip>{' '}
-          {t('bio.location')}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea temporibus molestias dolor fuga quisquam et sapiente maiores possimus praesentium?
         </p>
-        <p>{t('bio.blog')}</p>
-        <p>{t('bio.vim')}</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea temporibus molestias dolor fuga quisquam et sapiente maiores possimus praesentium?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea temporibus molestias dolor fuga quisquam et sapiente maiores possimus praesentium?</p>
       </section>
 
       <section className="mt-8 text-base text-slate-800 dark:text-gray-100">
         <Link
-          href={locale === 'pt' ? '/blog' : '/en/blog'}
+          href={'blog'}
           className="group flex items-center gap-2 text-lg font-normal text-slate-600 dark:text-gray-400 mb-6 hover:text-slate-800 dark:hover:text-gray-100 transition-colors duration-200"
         >
-          {t('recentPosts')}
+          Posts
           <ChevronRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
         </Link>
         <div className="space-y-1">
@@ -159,11 +157,10 @@ export function HomeContent({ posts }: HomeContentProps) {
                         posthog.capture('blog-card-clicked-home', {
                           href,
                           title,
-                          locale,
                         })
                       }}
                     >
-                      <div className="w-12 flex-shrink-0 text-sm text-gray-500 dark:text-gray-400">
+                      <div className="w-12 shrink-0 text-sm text-gray-500 dark:text-gray-400">
                         {index === 0 ? year : ''}
                       </div>
                       <div className="flex-1 text-sm text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-200">
@@ -172,7 +169,7 @@ export function HomeContent({ posts }: HomeContentProps) {
                       <div className="text-xs text-gray-400 dark:text-gray-500 group-hover:text-gray-500 dark:group-hover:text-gray-400 transition-colors duration-200">
                         <time dateTime={publishedTime.toString()}>
                           {new Intl.DateTimeFormat(
-                            locale === 'pt' ? 'pt-BR' : 'en-US',
+                            "en-US",
                             {
                               month: '2-digit',
                               day: '2-digit',

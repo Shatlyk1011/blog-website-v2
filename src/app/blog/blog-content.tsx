@@ -1,7 +1,6 @@
 'use client'
 
 import { BlogCard } from '@/components'
-import { LanguageSwitcher } from '@/components/language-switcher'
 import { useSearchParams } from 'next/navigation'
 import { Post } from '@/utils/mdx'
 import Link from 'next/link'
@@ -29,7 +28,6 @@ export function BlogContent({ posts: p }: BlogContentProps) {
           <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" />
           Index
         </Link>
-        <LanguageSwitcher />
       </div>
       {posts?.map((post, index) => (
         <article

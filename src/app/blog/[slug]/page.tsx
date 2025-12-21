@@ -16,7 +16,6 @@ import rehypeSlug from 'rehype-slug'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { h } from 'hastscript'
-import { locales } from '@/i18n/config'
 
 const components = {
   pre: (props: any) => <Pre {...props} />,
@@ -45,46 +44,41 @@ const mdxOptions: any = {
 }
 
 export async function generateStaticParams() {
-  return locales.flatMap((locale) =>
-    getPosts(locale).map((post) => ({
-      locale,
-      slug: post.filePath.replace('.mdx', ''),
-    })),
-  )
+  return getPosts().map((post) => ({
+    slug: post.filePath.replace('.mdx', ''),
+  }))
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string; slug: string }>
+  params: Promise<{slug: string }>
 }): Promise<Metadata> {
-  const { locale, slug } = await params
-  const { frontMatter } = await getMdxSerializedPost(slug, locale)
+  const { slug } = await params
+  const { frontMatter } = await getMdxSerializedPost(slug)
   const { title, description, tags, image } = frontMatter
 
-  const canonicalUrl =
-    locale === 'pt'
-      ? `https://thayto.com/blog/${slug}`
-      : `https://thayto.com/en/blog/${slug}`
+  // const canonicalUrl =
+  //   locale === 'pt'
+  //     ? `https://thayto.com/blog/${slug}`
+  //     : `https://thayto.com/en/blog/${slug}`
 
   return {
     title: `${title} - Rafael Thayto`,
     description,
     keywords: tags?.join(', '),
     alternates: {
-      canonical: canonicalUrl,
+      // canonical: canonicalUrl,
       languages: {
-        pt: `https://thayto.com/blog/${slug}`,
-        en: `https://thayto.com/en/blog/${slug}`,
+        // en: `https://thayto.com/en/blog/${slug}`,
       },
     },
     openGraph: {
       type: 'article',
-      url: canonicalUrl,
+      // url: canonicalUrl,
       title,
       description,
-      locale: locale === 'pt' ? 'pt_BR' : 'en_US',
-      alternateLocale: locale === 'pt' ? 'en_US' : 'pt_BR',
+      locale: 'en_US',
       images: [
         {
           url: `https://thayto.com/static/images/${
@@ -107,7 +101,7 @@ export async function generateMetadata({
       site: '@thayto',
       creator: '@_thayto',
       images: [
-        `https://thayto.com/static/images/${image?.src || 'profile.jpg'}`,
+        `https://thayto.com/static/images/${image?.src || 'profile.png'}`,
       ],
     },
   }
@@ -116,10 +110,10 @@ export async function generateMetadata({
 export default async function PostPage({
   params,
 }: {
-  params: Promise<{ locale: string; slug: string }>
+  params: Promise<{ slug: string }>
 }) {
-  const { locale, slug } = await params
-  const { frontMatter, mdxSource } = await getMdxSerializedPost(slug, locale)
+  const { slug } = await params
+  const { frontMatter, mdxSource } = await getMdxSerializedPost(slug)
   const {
     title,
     description,
@@ -129,10 +123,10 @@ export default async function PostPage({
     image,
     keywords,
   } = frontMatter
-  const prevPost = getPreviousOrNextPostBySlug(slug, 'previous', locale)
-  const nextPost = getPreviousOrNextPostBySlug(slug, 'next', locale)
+  const prevPost = getPreviousOrNextPostBySlug(slug, 'previous')
+  const nextPost = getPreviousOrNextPostBySlug(slug, 'next')
 
-  const blogUrl = locale === 'pt' ? `/blog/${slug}` : `/en/blog/${slug}`
+  const blogUrl = `/blog/${slug}`
 
   // Calculate word count for LLM SEO
   const content = mdxSource.toString()
@@ -152,7 +146,7 @@ export default async function PostPage({
     description: description,
     datePublished: publishedTime,
     dateModified: modifiedTime,
-    inLanguage: locale === 'pt' ? 'pt-BR' : 'en-US',
+    inLanguage: 'en-US',
     // NEW: Word count and reading time (critical for LLMs)
     wordCount: wordCount,
     timeRequired: `PT${readingTimeMinutes}M`,
@@ -171,7 +165,7 @@ export default async function PostPage({
       '@type': 'Person',
       '@id': 'https://thayto.com/#person',
       name: 'Rafael Thayto',
-      url: `${SITE_URL}${locale === 'en' ? '/en' : ''}/about`,
+      url: `${SITE_URL}/about`,
       jobTitle: 'Senior Software Engineer',
       sameAs: [
         'https://github.com/rafa-thayto',
@@ -185,7 +179,7 @@ export default async function PostPage({
       name: 'Rafael Thayto',
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/static/images/profile.jpg`,
+        url: `${SITE_URL}/static/images/profile.png`,
         width: 460,
         height: 460,
       },
@@ -193,7 +187,7 @@ export default async function PostPage({
     // Enhanced image
     image: {
       '@type': 'ImageObject',
-      url: `${SITE_URL}/static/images/${image?.src || 'profile.jpg'}`,
+      url: `${SITE_URL}/static/images/${image?.src || 'profile.png'}`,
       width: 1200,
       height: 630,
     },
@@ -205,13 +199,13 @@ export default async function PostPage({
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: `${SITE_URL}${locale === 'en' ? '/en' : ''}`,
+          item: `${SITE_URL}${'/en'}`,
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Blog',
-          item: `${SITE_URL}${locale === 'en' ? '/en' : ''}/blog`,
+          item: `${SITE_URL}${'/en'}/blog`,
         },
         {
           '@type': 'ListItem',
@@ -268,7 +262,7 @@ export default async function PostPage({
               <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-8 sm:mb-12">
                 <time dateTime={publishedTime} className="font-medium">
                   {new Intl.DateTimeFormat(
-                    locale === 'pt' ? 'pt-BR' : 'en-US',
+                    'en-US',
                     {
                       dateStyle: 'long',
                     },

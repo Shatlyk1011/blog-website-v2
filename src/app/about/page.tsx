@@ -1,7 +1,6 @@
 import { Layout } from '@/components'
 import { getYearsOfProfessionalExperience } from '@/constants'
 import { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -9,19 +8,15 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'metadata.about' })
   const years = getYearsOfProfessionalExperience()
-  const tAbout = await getTranslations({ locale, namespace: 'about.bio' })
-  const description = `${tAbout('paragraph1', { years })} ${tAbout(
-    'paragraph2',
-  )}`
+  const description = `paragraph1, { years })}`
 
   const canonicalUrl =
     locale === 'pt' ? 'https://thayto.com/about' : 'https://thayto.com/en/about'
 
   return {
-    title: t('title'),
-    description: t('description'),
+    title: "title",
+    description: 'description',
     alternates: {
       canonical: canonicalUrl,
       languages: {
@@ -32,8 +27,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       type: 'article',
       url: canonicalUrl,
-      title: t('title'),
-      description: t('description'),
+      title: 'title',
+      description: 'description',
       locale: locale === 'pt' ? 'pt_BR' : 'en_US',
       alternateLocale: locale === 'pt' ? 'en_US' : 'pt_BR',
       images: [
@@ -54,27 +49,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'about' })
   const years = getYearsOfProfessionalExperience()
 
   return (
     <Layout>
       <main className="max-w-6xl mx-auto shadow bg-slate-50 dark:bg-black  py-6 px-4 sm:px-12 mt-6">
         <h1 className="text-xl text-slate-900 dark:text-white font-bold mt-4">
-          {t('title')}
+          title
         </h1>
 
         <div className="mt-6">
           <p className="text-base font-serif text-slate-800 dark:text-gray-100">
-            {t('bio.paragraph1', { years })}
+            bio.paragraph1
           </p>
           <p className="text-base font-serif text-slate-800 dark:text-gray-100 mt-2">
-            {t('bio.paragraph2')}
+            bio.paragraph2
           </p>
         </div>
 
         <p className="text-xl font-serif text-slate-800 dark:text-gray-100 mt-10">
-          {t('bio.inProgress')}
+          bio.inProgress
         </p>
 
         <p className="text-base font-serif text-slate-800 dark:text-gray-100 mt-10">

@@ -1,7 +1,6 @@
 //@ts-check
 
 // @typescript-eslint/no-var-requires
-const withNextIntl = require('next-intl/plugin')('./src/i18n/request.ts')
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
   options: {
@@ -108,10 +107,8 @@ const nextConfig = {
   },
 }
 
-module.exports = withNextIntl(
-  withMDX({
-    ...withPlaiceholder(nextConfig),
-    // Append the default value with md extensions
-    pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-  }),
-)
+module.exports = withMDX({
+  ...withPlaiceholder(nextConfig),
+  // Append the default value with md extensions
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+})

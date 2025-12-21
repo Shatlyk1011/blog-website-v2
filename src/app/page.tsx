@@ -3,81 +3,66 @@ import { Metadata } from 'next'
 import { getPosts } from '@/utils/mdx'
 import { getYearsOfProfessionalExperience } from '@/constants'
 import { HomeContent } from './home-content'
-import { getTranslations } from 'next-intl/server'
+import siteMetadata from './siteMetadata'
 
-type Props = {
-  params: Promise<{ locale: string }>
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'metadata.home' })
+export async function generateMetadata(): Promise<Metadata> {
   const years = getYearsOfProfessionalExperience()
-  const description = t('description', { years })
+  const description = "description"
 
-  const canonicalUrl =
-    locale === 'pt' ? 'https://thayto.com/' : 'https://thayto.com/en/'
+  const canonicalUrl = siteMetadata.siteUrl
 
   return {
-    title: t('title'),
+    title: "title",
     description,
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        pt: 'https://thayto.com/',
-        en: 'https://thayto.com/en/',
-      },
     },
     openGraph: {
       type: 'article',
       url: canonicalUrl,
-      title: t('title'),
+      title: "title",
       description,
-      locale: locale === 'pt' ? 'pt_BR' : 'en_US',
-      alternateLocale: locale === 'pt' ? 'en_US' : 'pt_BR',
+      locale:'en_US',
       images: [
         {
-          url: 'https://thayto.com/static/images/seo-card-home.png',
+          url: `${siteMetadata.siteUrl}/static/images/seo-card-home.png`,
           type: 'image/png',
         },
       ],
-      siteName: 'Thayto.com',
+      siteName: `Shatlyk's Blog`,
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@thayto',
-      creator: '@thayto',
+      site: '@shatlyk',
+      creator: '@shatlyk',
     },
   }
 }
 
-export default async function IndexPage({ params }: Props) {
-  const { locale } = await params
-  const posts = getPosts(locale)
+export default async function IndexPage() {
+  const posts = getPosts()
   const years = getYearsOfProfessionalExperience()
-  const t = await getTranslations({ locale, namespace: 'metadata.home' })
-  const description = t('description', { years })
+  const description = "description"
 
   // Enhanced Person Schema for LLM/AI discoverability
   const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    '@id': 'https://thayto.com/#person',
-    name: 'Rafael Thayto',
-    url: 'https://thayto.com',
+    '@id': `${siteMetadata.siteUrl}/#person`,
+    name: siteMetadata.authorShort,
+    url: `${siteMetadata.siteUrl}`,
     image: {
       '@type': 'ImageObject',
-      url: 'https://thayto.com/static/images/profile.jpg',
+      url: `${siteMetadata.siteUrl}/static/images/profile.png`,
       width: 460,
       height: 460,
-      caption: 'Rafael Thayto Profile Picture',
+      caption: `${siteMetadata.author} Profile Picture`,
     },
     jobTitle: 'Senior Software Engineer',
     description: description,
     sameAs: [
-      'https://github.com/rafa-thayto',
-      'https://linkedin.com/in/thayto',
-      'https://x.com/thayto_dev',
+      siteMetadata.github,
+      siteMetadata.linkedin,
     ],
     knowsAbout: [
       'TypeScript',
@@ -101,36 +86,32 @@ export default async function IndexPage({ params }: Props) {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': ['Organization', 'Brand'],
-    '@id': 'https://thayto.com/#organization',
-    name: 'Rafael Thayto',
-    url: 'https://thayto.com',
-    logo: 'https://thayto.com/static/images/profile.jpg',
-    founder: { '@id': 'https://thayto.com/#person' },
+    '@id': `${siteMetadata.siteUrl}/#organization`,
+    name: siteMetadata.authorShort,
+    url: siteMetadata.siteUrl,
+    logo: `${siteMetadata.siteUrl}/static/images/profile.png`,
     sameAs: [
-      'https://github.com/rafa-thayto',
-      'https://linkedin.com/in/thayto',
+      siteMetadata.github,
+      siteMetadata.linkedin,
     ],
-    description:
-      locale === 'pt'
-        ? 'Blog sobre desenvolvimento de software, TypeScript, Next.js e arquitetura'
-        : 'Blog about software development, TypeScript, Next.js, and architecture',
+    description: 'Blog about software development, TypeScript, Next.js, and architecture',
   }
 
   const webPageStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': locale === 'pt' ? 'https://thayto.com' : 'https://thayto.com/en',
-    url: locale === 'pt' ? 'https://thayto.com' : 'https://thayto.com/en',
-    name: 'Rafael Thayto - Home',
+    '@id': siteMetadata.siteUrl,
+    url: siteMetadata.siteUrl,
+    name: 'Shatlyk Abdullayev - Home',
     description: description,
-    inLanguage: locale === 'pt' ? 'pt-BR' : 'en-US',
-    author: { '@id': 'https://thayto.com/#person' },
+    inLanguage: 'en-US',
+    author: { '@id': `${siteMetadata.siteUrl}/#person` },
     image: {
       '@type': 'ImageObject',
-      url: 'https://thayto.com/static/images/profile.jpg',
+      url: `${siteMetadata.siteUrl}/static/images/profile.png`,
       width: 460,
       height: 460,
-      caption: 'Rafael Thayto Profile Picture',
+      caption: `${siteMetadata.author} Profile Picture`,
     },
     breadcrumb: {
       '@type': 'BreadcrumbList',
@@ -139,26 +120,21 @@ export default async function IndexPage({ params }: Props) {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item:
-            locale === 'pt' ? 'https://thayto.com' : 'https://thayto.com/en',
+          item: siteMetadata.siteUrl
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Blog',
           item:
-            locale === 'pt'
-              ? 'https://thayto.com/blog'
-              : 'https://thayto.com/en/blog',
+           siteMetadata.siteUrl
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: 'LinkTree',
           item:
-            locale === 'pt'
-              ? 'https://thayto.com/linktree'
-              : 'https://thayto.com/en/linktree',
+            siteMetadata.siteUrl
         },
       ],
     },

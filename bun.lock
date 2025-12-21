@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "thayto.com",
+      "name": "blog.shatlykabdullayev.com",
       "dependencies": {
         "@fec/remark-a11y-emoji": "^4.0.2",
         "@headlessui/react": "^2.2.9",
@@ -54,7 +54,7 @@
         "sharp": "^0.34.4",
         "svg-path-commander": "^2.1.11",
         "tailwind-merge": "^3.3.0",
-        "tailwindcss": "^4.1.8",
+        "tailwindcss": "^4.1.8"
       },
       "devDependencies": {
         "@commitlint/cli": "^17.1.2",
@@ -94,8 +94,8 @@
         "ts-node": "10.9.1",
         "tw-animate-css": "^1.3.3",
         "typescript": "5.9.3",
-        "vitest": "^4.0.15",
-      },
+        "vitest": "^4.0.15"
+      }
     },
   },
   "overrides": {

@@ -1,4 +1,3 @@
-import { getPostsPath } from '@/constants'
 import * as A from 'fp-ts/lib/Array'
 import { pipe } from 'fp-ts/lib/function'
 import * as O from 'fp-ts/lib/Option'
@@ -63,8 +62,8 @@ export function calculateWordCount(content: string): number {
     .filter((word) => word.length > 0).length
 }
 
-export const getPosts = (locale: string): Post[] => {
-  const postsPath = getPostsPath(locale)
+export const getPosts = (): Post[] => {
+  const postsPath = 'posts'
   const postFilePaths = fs
     .readdirSync(postsPath)
     // Only include md(x) files
@@ -79,7 +78,6 @@ export const getPosts = (locale: string): Post[] => {
       content,
       data,
       filePath,
-      locale,
     }
   })
 
@@ -88,8 +86,8 @@ export const getPosts = (locale: string): Post[] => {
   return posts
 }
 
-export const getMdxSerializedPost = async (slug: string, locale: string) => {
-  const postsPath = getPostsPath(locale)
+export const getMdxSerializedPost = async (slug: string) => {
+  const postsPath = 'posts'
   const markdownWithMeta = fs.readFileSync(
     path.join(postsPath, `${slug}.mdx`),
     'utf-8',
@@ -105,12 +103,8 @@ export const getMdxSerializedPost = async (slug: string, locale: string) => {
 
 type NextPreviousType = 'previous' | 'next'
 
-export const getPreviousOrNextPostBySlug = (
-  slug: string,
-  type: NextPreviousType,
-  locale: string,
-) => {
-  const posts = getPosts(locale)
+export const getPreviousOrNextPostBySlug = (slug: string, type: NextPreviousType) => {
+  const posts = getPosts()
   const currentFileName = `${slug}.mdx`
   const currentPostIndex = pipe(
     posts,

@@ -1,11 +1,10 @@
 import { MetadataRoute } from 'next'
 import { getPosts } from '@/utils/mdx'
-import { defaultLocale } from '@/i18n/config'
+import siteMetadata from './siteMetadata'
 
 // Helper function to build URLs based on locale
-const buildUrl = (path: string, locale: string): string => {
-  const prefix = locale === 'pt' ? '' : `${locale}/`
-  return `https://thayto.com/${prefix}${path}`
+const buildUrl = (path: string): string => {
+  return `${siteMetadata.siteUrl}/${path}`
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -18,32 +17,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const pageUrl = page === '' ? '' : `${page}`
 
     entries.push({
-      url: buildUrl(pageUrl, 'pt'), // Default locale URL
+      url: buildUrl(pageUrl), // Default locale URL
       lastModified: new Date(),
       changeFrequency:
         page === '' ? 'weekly' : page === 'blog' ? 'weekly' : 'monthly',
       priority: page === '' ? 1.0 : page === 'blog' ? 0.9 : 0.8,
       alternates: {
         languages: {
-          'x-default': buildUrl(pageUrl, 'pt'),
-          pt: buildUrl(pageUrl, 'pt'),
-          en: buildUrl(pageUrl, 'en'),
+          'x-default': buildUrl(pageUrl),
         },
       },
     })
   }
 
   // Fetch posts from both locales
-  const ptPosts = getPosts('pt')
-  const enPosts = getPosts('en')
+  const enPosts = getPosts()
 
   // Create a map of slug -> {pt: Post, en: Post}
-  const postsBySlug = new Map<string, { pt?: any; en?: any }>()
-
-  ptPosts.forEach((post) => {
-    const slug = post.filePath.replace('.mdx', '')
-    postsBySlug.set(slug, { pt: post })
-  })
+  const postsBySlug = new Map()
 
   enPosts.forEach((post) => {
     const slug = post.filePath.replace('.mdx', '')
@@ -57,27 +48,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Generate blog post URLs (one entry per post with alternates)
   for (const [slug, variants] of Array.from(postsBySlug.entries())) {
-    const ptPost = variants.pt
     const enPost = variants.en
 
     // Use Portuguese version as default (or English if PT doesn't exist)
-    const defaultPost = ptPost || enPost!
+    const defaultPost = enPost
 
     // Build alternates object
     const languages: { [key: string]: string } = {}
 
-    if (ptPost) {
-      languages.pt = buildUrl(`blog/${slug}`, 'pt')
-    }
     if (enPost) {
-      languages.en = buildUrl(`blog/${slug}`, 'en')
+      languages.en = buildUrl(`blog/${slug}`)
     }
 
-    // x-default points to pt if available, otherwise en
-    languages['x-default'] = buildUrl(`blog/${slug}`, ptPost ? 'pt' : 'en')
+    languages['x-default'] = buildUrl(`blog/${slug}`)
 
     entries.push({
-      url: buildUrl(`blog/${slug}`, ptPost ? 'pt' : 'en'),
+      url: buildUrl(`blog/${slug}`),
       lastModified: new Date(defaultPost.data.modifiedTime),
       changeFrequency: 'weekly',
       priority: 0.7,

@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://thayto.com
+Host: https://blog.shatlykabdullayev.com
 
 # Sitemaps
-Sitemap: https://thayto.com/sitemap.xml
+Sitemap: https://blog.shatlykabdullayev.com/sitemap.xml
