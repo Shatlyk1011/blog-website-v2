@@ -17,17 +17,6 @@ const { withPlaiceholder } = require('@plaiceholder/next')
  **/
 const nextConfig = {
   reactStrictMode: true,
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'dev-to-uploads.s3.amazonaws.com',
-        port: '',
-        pathname: '/uploads/**',
-      },
-    ],
-  },
-
   async redirects() {
     return [
       {
