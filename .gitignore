@@ -79,3 +79,5 @@ sitemap-0.xml
 .env.development
 .env.staging
 .env.production
+
+/public
