@@ -8,7 +8,6 @@ import {
   getPosts,
   calculateWordCount,
 } from '@/utils/mdx'
-import { SITE_URL } from '@/utils/constants'
 import { BlogPostNavigation } from './blog-post-navigation'
 import remarkGfm from 'remark-gfm'
 import remarkA11yEmoji from '@fec/remark-a11y-emoji'
@@ -16,6 +15,7 @@ import rehypeSlug from 'rehype-slug'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { h } from 'hastscript'
+import siteMetadata from '@/app/siteMetadata'
 
 const components = {
   pre: (props: any) => <Pre {...props} />,
@@ -58,19 +58,16 @@ export async function generateMetadata({
   const { frontMatter } = await getMdxSerializedPost(slug)
   const { title, description, tags, image } = frontMatter
 
-  // const canonicalUrl =
-  //   locale === 'pt'
-  //     ? `https://thayto.com/blog/${slug}`
-  //     : `https://thayto.com/en/blog/${slug}`
+  const canonicalUrl = `${siteMetadata.siteUrl}/blog/${slug}`
 
   return {
-    title: `${title} - Rafael Thayto`,
+    title: `${title} - Shatlyk Abdullayev`,
     description,
     keywords: tags?.join(', '),
     alternates: {
-      // canonical: canonicalUrl,
+      canonical: canonicalUrl,
       languages: {
-        // en: `https://thayto.com/en/blog/${slug}`,
+        en: `${siteMetadata.siteUrl}/blog/${slug}`,
       },
     },
     openGraph: {
@@ -81,7 +78,7 @@ export async function generateMetadata({
       locale: 'en_US',
       images: [
         {
-          url: `https://thayto.com/static/images/${
+          url: `${siteMetadata.siteUrl}/static/images/${
             image?.src || 'seo-card-default.png'
           }`,
           width: 460,
@@ -90,18 +87,18 @@ export async function generateMetadata({
           type: image?.type || 'image/png',
         },
       ],
-      siteName: 'Thayto',
+      siteName: 'Shatlyk1011',
       publishedTime: frontMatter.publishedTime,
       modifiedTime: frontMatter.modifiedTime,
-      authors: ['Rafael Thayto'],
+      authors: ['Shatlyk Abdullayev'],
       tags,
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@thayto',
-      creator: '@_thayto',
+      site: '@Shatlyk1011',
+      creator: '@Shatlyk1011',
       images: [
-        `https://thayto.com/static/images/${image?.src || 'profile.png'}`,
+        `${siteMetadata.siteUrl}/static/images/${image?.src || 'profile.png'}`,
       ],
     },
   }
@@ -137,10 +134,10 @@ export default async function PostPage({
   const blogPostingStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    '@id': `${SITE_URL}${blogUrl}`,
+    '@id': `${siteMetadata.siteUrl}${blogUrl}`,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${SITE_URL}${blogUrl}`,
+      '@id': `${siteMetadata.siteUrl}${blogUrl}`,
     },
     headline: title,
     description: description,
@@ -163,23 +160,23 @@ export default async function PostPage({
     // ENHANCED: Author with full details
     author: {
       '@type': 'Person',
-      '@id': 'https://thayto.com/#person',
-      name: 'Rafael Thayto',
-      url: `${SITE_URL}/about`,
+      '@id': `${siteMetadata.siteUrl}/#person`,
+      name: 'Shatlyk Abdullayev',
+      url: `${siteMetadata.siteUrl}/about`,
       jobTitle: 'Senior Software Engineer',
       sameAs: [
-        'https://github.com/rafa-thayto',
-        'https://linkedin.com/in/thayto',
+        'https://github.com/shatlyk1011',
+        'https://linkedin.com/in/shatlyk1011',
       ],
     },
     // ENHANCED: Publisher
     publisher: {
       '@type': 'Person',
-      '@id': 'https://thayto.com/#person',
-      name: 'Rafael Thayto',
+      '@id': `${siteMetadata.siteUrl}/#person`,
+      name: 'Shatlyk Abdullayev',
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/static/images/profile.png`,
+        url: `${siteMetadata.siteUrl}/static/images/profile.png`,
         width: 460,
         height: 460,
       },
@@ -187,7 +184,7 @@ export default async function PostPage({
     // Enhanced image
     image: {
       '@type': 'ImageObject',
-      url: `${SITE_URL}/static/images/${image?.src || 'profile.png'}`,
+      url: `${siteMetadata.siteUrl}/static/images/${image?.src || 'profile.png'}`,
       width: 1200,
       height: 630,
     },
@@ -199,19 +196,19 @@ export default async function PostPage({
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: `${SITE_URL}${'/en'}`,
+          item: `${siteMetadata.siteUrl}${'/en'}`,
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Blog',
-          item: `${SITE_URL}${'/en'}/blog`,
+          item: `${siteMetadata.siteUrl}${'/en'}/blog`,
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: title,
-          item: `${SITE_URL}${blogUrl}`,
+          item: `${siteMetadata.siteUrl}${blogUrl}`,
         },
       ],
     },
@@ -269,7 +266,7 @@ export default async function PostPage({
                   ).format(new Date(publishedTime))}
                 </time>
                 <span className="mx-2">•</span>
-                <span>Rafael Thayto</span>
+                <span>Shatlyk Abdullayev</span>
               </div>
             </header>
 

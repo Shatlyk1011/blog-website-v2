@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useMemo } from 'react'
 import { ThemeSwitcher } from '../theme-switcher/theme-switcher'
 import { Text } from '../ui/text'
+import siteMetadata from '@/app/siteMetadata'
 
 type Link = {
   href: string
@@ -31,15 +32,15 @@ export const Footer = ({
         name: 'Linktree',
       },
       {
-        href: 'https://www.linkedin.com/in/thayto/',
+        href: `${siteMetadata.linkedin}`,
         name: 'LinkedIn',
       },
       {
-        href: 'https://github.com/rafa-thayto',
+        href: `${siteMetadata.github}`,
         name: 'GitHub',
       },
       {
-        href: 'https://www.youtube.com/@thayto_dev',
+        href: `${siteMetadata.youtube}`,
         name: 'YouTube',
       },
       {

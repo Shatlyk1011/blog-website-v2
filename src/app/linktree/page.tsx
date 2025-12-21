@@ -1,31 +1,32 @@
 import { Metadata } from 'next'
 import { LinktreeContent } from './linktree-content'
+import siteMetadata from '../siteMetadata'
 
-const description = 'Minha árvore de links'
+const description = 'Shatlyk Abdullayev - Linktree'
 
 export const metadata: Metadata = {
-  title: 'Rafael Thayto - Linktree',
+  title: 'Shatlyk Abdullayev - Linktree',
   description,
   alternates: {
-    canonical: 'https://thayto.com/linktree',
+    canonical: `${siteMetadata.siteUrl}/linktree`,
   },
   openGraph: {
     type: 'article',
-    url: 'https://thayto.com/linktree',
-    title: 'Rafael Thayto - Linktree',
+    url: `${siteMetadata.siteUrl}/linktree`,
+    title: 'Shatlyk Abdullayev - Linktree',
     description,
     images: [
       {
-        url: 'https://thayto.com/static/images/seo-card-linktree.png',
+        url: `${siteMetadata.siteUrl}/static/images/seo-card-linktree.png`,
         type: 'image/png',
       },
     ],
-    siteName: 'Thayto.com',
+    siteName: 'Shatlyk1011',
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@thayto',
-    creator: '@thayto',
+    site: '@shatlyk',
+    creator: '@shatlyk',
   },
 }
 

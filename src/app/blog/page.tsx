@@ -1,101 +1,90 @@
 import { Layout } from '@/components'
 import { Metadata } from 'next'
 import { getPosts } from '@/utils/mdx'
-import { SITE_URL } from '@/utils/constants'
 import { BlogContent } from './blog-content'
 import { Suspense } from 'react'
+import siteMetadata from '../siteMetadata'
 
-type Props = {
-  params: Promise<{ locale: string }>
-}
+export async function generateMetadata(): Promise<Metadata> {
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params
-
-  const canonicalUrl =
-    locale === 'pt' ? 'https://thayto.com/blog' : 'https://thayto.com/en/blog'
+  const canonicalUrl = `${siteMetadata.siteUrl}/blog`
 
   return {
     title: 'title',
     description: 'description',
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        pt: 'https://thayto.com/blog',
-        en: 'https://thayto.com/en/blog',
-      },
     },
     openGraph: {
       url: canonicalUrl,
       title: 'title',
       description: 'description',
-      locale: locale === 'pt' ? 'pt_BR' : 'en_US',
-      alternateLocale: locale === 'pt' ? 'en_US' : 'pt_BR',
+      locale: 'en_US',
+      alternateLocale: 'en_US',
       images: [
         {
-          url: 'https://thayto.com/static/images/seo-card-blog.png',
+          url: `${siteMetadata.siteUrl}/static/images/seo-card-blog.png`,
           type: 'image/png',
         },
       ],
-      siteName: 'Thayto.com',
+      siteName: siteMetadata.siteUrl,
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@thayto',
-      creator: '@thayto',
+      site: '@blog.shatlykabdullayev',
+      creator: '@blog.shatlykabdullayev',
     },
   }
 }
 
-export default async function Blog({ params }: Props) {
-  const { locale } = await params
-  const posts = getPosts(locale)
+export default async function Blog() {
+  const posts = getPosts()
 
-  const blogUrl = locale === 'pt' ? '/blog' : '/en/blog'
+  const blogUrl = '/blog'
 
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
     name: 'title',
-    url: `${SITE_URL}${blogUrl}`,
+    url: `${siteMetadata.siteUrl}${blogUrl}`,
     description: 'description',
-    inLanguage: locale === 'pt' ? 'pt-BR' : 'en-US',
+    inLanguage: 'pt-BR',
     publisher: {
       '@type': 'Person',
-      name: 'Rafael Thayto',
-      url: 'https://thayto.com',
+      name: 'Shatlyk Abdullayev',
+      url: siteMetadata.siteUrl,
       image: {
         '@type': 'ImageObject',
-        url: 'https://thayto.com/static/images/profile.png',
+        url: `${siteMetadata.siteUrl}/static/images/profile.png`,
         width: 460,
         height: 460,
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${SITE_URL}${blogUrl}`,
+      '@id': `${siteMetadata.siteUrl}${blogUrl}`,
     },
     blogPost: posts.map(({ data }) => ({
       '@type': 'BlogPosting',
       headline: data.title,
       description: data.description,
-      image: `${SITE_URL}/static/images/${data.image.src}`,
+      image: `${siteMetadata.siteUrl}/static/images/${data.image.src}`,
       datePublished: data.publishedTime,
       dateModified: data.modifiedTime,
-      inLanguage: locale === 'pt' ? 'pt-BR' : 'en-US',
+      inLanguage: 'en-US',
       author: {
         '@type': 'Person',
-        name: 'Rafael Thayto',
+        name: 'Shatlyk Abdullayev',
         jobTitle: 'Senior Software Engineer',
-        url: `${SITE_URL}/static/images/profile.png`,
+        url: `${siteMetadata.siteUrl}/static/images/profile.png`,
       },
       publisher: {
         '@type': 'Person',
-        name: 'Rafael Thayto',
+        name: 'Shatlyk Abdullayev',
         jobTitle: 'Senior Software Engineer',
-        url: `${SITE_URL}/static/images/profile.png`,
+        url: `${siteMetadata.siteUrl}/static/images/profile.png`,
       },
-      url: `${SITE_URL}${data.href}`,
+      url: `${siteMetadata.siteUrl}${data.href}`,
     })),
   }
 

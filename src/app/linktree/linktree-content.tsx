@@ -1,8 +1,6 @@
 'use client'
 
-import { DevTo, Footer, GitHub, LinkedIn, TabNews, Twitter } from '@/components'
-import { Bsky } from '@/components/Icons/Bsky'
-import { Twitch } from '@/components/Icons/Twitch'
+import { Footer, GitHub, LinkedIn } from '@/components'
 import { IconProps } from '@/components/Icons/types'
 import { YouTube } from '@/components/Icons/YouTube'
 import { Instagram, ExternalLink } from 'lucide-react'
@@ -11,6 +9,7 @@ import Link from 'next/link'
 import posthog from 'posthog-js'
 import React, { useState, useEffect, useRef } from 'react'
 import Confetti from 'react-confetti'
+import siteMetadata from '../siteMetadata'
 
 type ButtonLink = {
   href: string
@@ -19,100 +18,32 @@ type ButtonLink = {
 }
 
 const links: ButtonLink[] = [
-  {
-    href: 'https://hub.la/r/lista-espera',
-    Icon: null,
-    text: 'lista de espera | linkedin',
-  },
-  {
-    href: 'https://discord.gg/JXxC4xTdDU',
-    Icon: null,
-    text: 'Discord - Tutorandus Community',
-  },
-  {
-    href: 'https://higlobe.com?grsf=rafael-xnn88r',
-    Icon: null,
-    text: 'Higlobe - USD 20$ pra você e pra mim',
-  },
-  {
-    href: 'https://github.com/rafa-thayto/lazy-thayto-vim',
-    Icon: null,
-    text: '❤️ Neovim Configs',
-  },
-  {
-    href: 'https://thayto.substack.com/',
-    Icon: null,
-    text: 'Newsletter - First Time Founder',
-  },
+
   {
     href: '/blog',
     Icon: null,
     text: 'Blog',
   },
   {
-    href: 'https://www.linkedin.com/in/thayto/',
+    href: siteMetadata.linkedin,
     Icon: LinkedIn,
     text: 'LinkedIn',
   },
   {
-    href: 'https://www.youtube.com/@thayto_dev',
+    href: siteMetadata.youtube,
     Icon: YouTube,
     text: 'Youtube',
   },
+
   {
-    href: 'https://podcasters.spotify.com/pod/show/devseniorscast',
-    Icon: null,
-    text: '🎙️ DevSenior Cast',
-  },
-  {
-    href: 'https://github.com/rafa-thayto',
+    href: siteMetadata.github,
     Icon: GitHub,
     text: 'GitHub',
   },
   {
-    href: 'https://www.instagram.com/thayto_dev/?utm_source=thayto.com',
+    href: `${siteMetadata.instagram}/?utm_source=blog.shatlykabdullayev.com`,
     Icon: Instagram as any,
     text: 'Instagram',
-  },
-  {
-    href: 'https://x.com/thayto_dev',
-    Icon: Twitter,
-    text: 'Twitter',
-  },
-  {
-    href: 'https://bsky.app/profile/thayto.dev',
-    Icon: Bsky,
-    text: 'Bluesky',
-  },
-  {
-    href: 'https://twitch.tv/thayto_dev',
-    Icon: Twitch,
-    text: 'Twitch',
-  },
-  {
-    href: 'https://hotm.art/hnWXd89A',
-    Icon: null,
-    text: 'Formação TS',
-  },
-  {
-    href: 'https://bit.ly/3nLnPQZ',
-    Icon: null,
-    text: 'CRUD com qualidade',
-  },
-  {
-    href: 'https://www.amazon.com.br/dp/8575226932?&_encoding=UTF8&tag=thayto-20&linkCode=ur2&linkId=a8887fab2c901ae25fb1855a72f0bc61&camp=1789&creative=9325',
-    Icon: null,
-    text: 'Estrutura de dados e algoritmos com JavaScript - Loiane',
-  },
-  {
-    href: 'https://dev.to/thayto/',
-    Icon: DevTo,
-    text: 'Dev.to',
-  },
-  {
-    href: 'https://www.tabnews.com.br/thayto',
-    Icon: TabNews,
-    text: 'TabNews',
   },
 ]
 
@@ -185,7 +116,7 @@ export function LinktreeContent() {
               <div className="relative w-full h-full bg-slate-50 dark:bg-black rounded-full p-0.5">
                 <Image
                   src="/static/images/profile.png"
-                  alt="Thayto's profile picture"
+                  alt="Shatlyk's profile picture"
                   fill
                   priority
                   className={`rounded-full object-cover transition-transform duration-300 ${
@@ -196,7 +127,7 @@ export function LinktreeContent() {
             </div>
             <div className="sm:ml-6 mt-4 sm:mt-0 flex justify-center flex-col">
               <h1 className="text-2xl text-slate-900 dark:text-white font-bold text-center sm:text-left">
-                Rafael Thayto Tani
+                Shatlyk Abdullayev
               </h1>
               <p className="text-md text-slate-900 dark:text-white text-center sm:text-left">
                 Senior Software Engineer 🇺🇸

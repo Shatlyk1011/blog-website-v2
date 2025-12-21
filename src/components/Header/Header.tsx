@@ -205,7 +205,7 @@ export const Header = () => {
                       isScrolled ? 'text-lg' : 'text-xl'
                     }`}
                   >
-                    Rafael Thayto
+                    Shatlyk Abdullayev
                   </span>
                 </Link>
               </div>
@@ -286,7 +286,7 @@ export const Header = () => {
               <div className="relative px-6 pt-6 flex items-center justify-between">
                 <div>
                   <span className="text-lg font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-200 bg-clip-text text-transparent">
-                    Rafael Thayto
+                    Shatlyk Abdullayev
                   </span>
                 </div>
                 <div>
