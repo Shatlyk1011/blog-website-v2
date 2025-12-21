@@ -32,7 +32,7 @@ export function BlogPostNavigation({
           className="inline-flex items-center text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 group"
         >
           <ArrowLeftIcon className="mr-2 h-4 w-4 transition-transform duration-200 group-hover:-translate-x-1" />
-          backToBlog
+          Back to blog
         </Link>
       </nav>
     )

@@ -7,7 +7,6 @@ import { Analytics } from './analytics'
 
 import siteMetadata from './siteMetadata'
 
-
 import '@/styles/blog.css'
 import '@/styles/globals.css'
 import '@/styles/styles.css'

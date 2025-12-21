@@ -32,20 +32,20 @@ export const Footer = ({
         name: 'Linktree',
       },
       {
-        href: `${siteMetadata.linkedin}`,
+        href: siteMetadata.linkedin,
         name: 'LinkedIn',
       },
       {
-        href: `${siteMetadata.github}`,
+        href: siteMetadata.github,
         name: 'GitHub',
       },
       {
-        href: `${siteMetadata.youtube}`,
+        href: siteMetadata.youtube,
         name: 'YouTube',
       },
       {
-        href: '/rss.xml',
-        name: 'RSS',
+        href: siteMetadata.instagram,
+        name: 'Instagram',
       },
     ],
     [],

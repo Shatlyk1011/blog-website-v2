@@ -8,11 +8,6 @@ import { ChevronRight } from 'lucide-react'
 import Confetti from 'react-confetti'
 import { Post } from '@/utils/mdx'
 import { getYearsOfProfessionalExperience } from '@/constants'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip'
 
 interface HomeContentProps {
   posts: Post[]
@@ -93,32 +88,20 @@ export function HomeContent({ posts }: HomeContentProps) {
         </div>
         <div className="sm:ml-6 mt-4 sm:mt-0 flex justify-center flex-col">
           <h1 className="text-2xl text-gray-900 dark:text-white font-bold">
-            Home
+            Shatlyk Abdullayev
           </h1>
           <h2 className="text-xl text-gray-500 dark:text-gray-300 font-light">
-            Senior Software Engineer
+            Software Engineer
           </h2>
         </div>
       </div>
 
       <section className="text-sm font-normal font-sans mt-6 flex flex-col gap-4 text-gray-700 dark:text-gray-200">
-        {/* <p>{t('greeting')}</p> */}
+        <p>Hi, I’m Shatlyk, a freelance web developer and designer with over {years} years of experience crafting scalable, user-focused web applications. I specialize in building modern, responsive solutions using best practices.</p>
         <p>
-          I currently have over {years} years of experience as a developer
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <span className="underline cursor-help">
-                large companies
-              </span>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ex quaerat magni magnam nam porro minus corrupti atque itaque voluptatem?</p>
-            </TooltipContent>
-          </Tooltip>{' '}
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea temporibus molestias dolor fuga quisquam et sapiente maiores possimus praesentium?
+          Previously worked as a led frontend teams on large-scale projects, driving both performance enhancements and top-tier SEO results. Managed the entire development cycle—from initial concept and architecture through deployment and optimization.
         </p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea temporibus molestias dolor fuga quisquam et sapiente maiores possimus praesentium?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea temporibus molestias dolor fuga quisquam et sapiente maiores possimus praesentium?</p>
+        <p>I’m open to freelance or collaborative projects. If you’re looking for someone passionate about both design and development <a className='text-blue-600 dark:text-blue-400' href="https://shatlykabdullayev.com" target="_blank" rel="noopener">let’s connect</a></p>
       </section>
 
       <section className="mt-8 text-base text-slate-800 dark:text-gray-100">
