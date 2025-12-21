@@ -77,7 +77,6 @@ export default async function IndexPage() {
       'SEO',
     ],
     knowsLanguage: [
-      { '@type': 'Language', name: 'Portuguese', alternateName: 'pt' },
       { '@type': 'Language', name: 'English', alternateName: 'en' },
     ],
   }

@@ -50,9 +50,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const [slug, variants] of Array.from(postsBySlug.entries())) {
     const enPost = variants.en
 
-    // Use Portuguese version as default (or English if PT doesn't exist)
-    const defaultPost = enPost
-
     // Build alternates object
     const languages: { [key: string]: string } = {}
 
@@ -64,7 +61,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     entries.push({
       url: buildUrl(`blog/${slug}`),
-      lastModified: new Date(defaultPost.data.modifiedTime),
+      lastModified: new Date(enPost.data.modifiedTime),
       changeFrequency: 'weekly',
       priority: 0.7,
       alternates: {
