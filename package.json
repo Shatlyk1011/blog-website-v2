@@ -11,8 +11,7 @@
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "lint": "eslint .",
-    "check-types": "tsc --noEmit",
-    "prepare": "husky install"
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "@fec/remark-a11y-emoji": "^4.0.2",
@@ -96,7 +95,6 @@
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.0.1",
     "happy-dom": "^20.0.11",
-    "husky": "^8.0.1",
     "jsdom": "^27.3.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.6.2",
