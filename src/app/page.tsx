@@ -1,18 +1,16 @@
 import { Layout } from '@/components'
 import { Metadata } from 'next'
 import { getPosts } from '@/utils/mdx'
-import { getYearsOfProfessionalExperience } from '@/constants'
 import { HomeContent } from './home-content'
 import siteMetadata from './siteMetadata'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const years = getYearsOfProfessionalExperience()
-  const description = "description"
+  const description = siteMetadata.description
 
   const canonicalUrl = siteMetadata.siteUrl
 
   return {
-    title: "title",
+    title: siteMetadata.author + ' - Blog',
     description,
     alternates: {
       canonical: canonicalUrl,
@@ -20,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'article',
       url: canonicalUrl,
-      title: "title",
+      title: siteMetadata.author + 'blog',
       description,
       locale:'en_US',
       images: [
@@ -33,16 +31,15 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@shatlyk',
-      creator: '@shatlyk',
+      site: '@shatlyk1011',
+      creator: '@shatlyk1011',
     },
   }
 }
 
 export default async function IndexPage() {
   const posts = getPosts()
-  const years = getYearsOfProfessionalExperience()
-  const description = "description"
+  const description = siteMetadata.description
 
   // Enhanced Person Schema for LLM/AI discoverability
   const personSchema = {
@@ -69,7 +66,7 @@ export default async function IndexPage() {
       'Next.js',
       'React',
       'Node.js',
-      'Microservices',
+      'Tailwind',
       'Software Architecture',
       'Full-Stack Development',
       'Web Performance',
@@ -90,6 +87,7 @@ export default async function IndexPage() {
     url: siteMetadata.siteUrl,
     logo: `${siteMetadata.siteUrl}/static/images/profile.png`,
     sameAs: [
+      siteMetadata.website,
       siteMetadata.github,
       siteMetadata.linkedin,
     ],
@@ -160,7 +158,7 @@ export default async function IndexPage() {
         }}
       />
 
-      <main className="max-w-4xl mx-auto bg-neutral-50 dark:bg-black py-4 px-4 sm:px-24">
+      <main className="max-w-4xl mx-auto py-4 px-4 sm:px-24">
         <HomeContent posts={posts} />
       </main>
     </Layout>

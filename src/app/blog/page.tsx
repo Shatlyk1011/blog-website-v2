@@ -45,7 +45,7 @@ export default async function Blog() {
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
-    name: 'title',
+    name: siteMetadata.title,
     url: `${siteMetadata.siteUrl}${blogUrl}`,
     description: 'description',
     inLanguage: 'pt-BR',

@@ -99,18 +99,18 @@ export function LinktreeContent() {
               onClick={handlePhotoClick}
             >
               <div
-                className={`absolute -inset-1 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 rounded-full blur-sm transition-all duration-500 ${
+                className={`absolute -inset-1 bg-linear-to-r from-blue-600 via-blue-500 to-blue-400 rounded-full blur-sm transition-all duration-500 ${
                   showAnimation ? 'opacity-75 animate-spin' : 'opacity-0'
                 }`}
               ></div>
               <div
-                className={`absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-300 rounded-full transition-all duration-500 ${
+                className={`absolute -inset-0.5 bg-linear-to-r from-blue-500 via-blue-400 to-blue-300 rounded-full transition-all duration-500 ${
                   showAnimation ? 'opacity-100 animate-spin' : 'opacity-0'
                 }`}
               ></div>
 
               {isHovering && !showAnimation && (
-                <div className="absolute -inset-2 rounded-full !border-2 !border-blue-500 !animate-pulse !opacity-60"></div>
+                <div className="absolute -inset-2 rounded-full border-2! border-blue-500! animate-pulse! opacity-60!"></div>
               )}
 
               <div className="relative w-full h-full bg-slate-50 dark:bg-black rounded-full p-0.5">

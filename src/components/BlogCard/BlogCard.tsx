@@ -86,12 +86,12 @@ export const BlogCard = ({
             />
           </div>
         )}
-        <div className="px-6 py-4 flex flex-col gap-2 flex-grow">
+        <div className="px-6 py-4 flex flex-col gap-2 grow">
           <div className="flex items-start justify-between gap-4 mb-2">
-            <h2 className="font-bold text-slate-900 dark:text-white text-xl line-clamp-2 flex-grow">
+            <h2 className="font-bold text-slate-900 dark:text-white text-xl line-clamp-2 grow">
               {title}
             </h2>
-            <p className="text-gray-400 text-xs flex-shrink-0 mt-1">
+            <p className="text-gray-400 text-xs shrink-0 mt-1">
               <time dateTime={new Date(publishedTime).toISOString()}>
                 {new Intl.DateTimeFormat('pt-BR', {
                   dateStyle: 'short',
@@ -115,9 +115,9 @@ export const BlogCard = ({
         </div>
       </Link>
 
-      <div className="px-6 py-4 hidden">
+      {/* <div className="px-6 py-4 hidden">
         <div className="flex">
-          {hasLike && (
+          {true && (
             <HeartIconSolid
               height={24}
               className="cursor-pointer"
@@ -125,7 +125,7 @@ export const BlogCard = ({
               onClick={handleLikeClick}
             />
           )}
-          {!hasLike && (
+          {!true && (
             <HeartIconOutline
               height={24}
               className="cursor-pointer"
@@ -161,7 +161,7 @@ export const BlogCard = ({
             </span>
           </>
         </Link>
-      </div>
+      </div> */}
     </div>
   )
 }

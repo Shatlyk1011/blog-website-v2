@@ -60,12 +60,12 @@ export function HomeContent({ posts }: HomeContentProps) {
           onClick={handlePhotoClick}
         >
           <div
-            className={`absolute -inset-1 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 rounded-full blur-sm transition-all duration-500 ${
+            className={`absolute -inset-1 bg-linear-to-r from-blue-600 via-blue-500 to-blue-400 rounded-full blur-sm transition-all duration-500 ${
               showAnimation ? 'opacity-75 animate-spin' : 'opacity-0'
             }`}
           ></div>
           <div
-            className={`absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-300 rounded-full transition-all duration-500 ${
+            className={`absolute -inset-0.5 bg-linear-to-r from-blue-500 via-blue-400 to-blue-300 rounded-full transition-all duration-500 ${
               showAnimation ? 'opacity-100 animate-spin' : 'opacity-0'
             }`}
           ></div>
@@ -101,16 +101,18 @@ export function HomeContent({ posts }: HomeContentProps) {
         <p>
           Previously worked as a led frontend teams on large-scale projects, driving both performance enhancements and top-tier SEO results. Managed the entire development cycle—from initial concept and architecture through deployment and optimization.
         </p>
-        <p>I’m open to freelance or collaborative projects. If you’re looking for someone passionate about both design and development <a className='text-blue-600 dark:text-blue-400' href="https://shatlykabdullayev.com" target="_blank" rel="noopener">let’s connect</a></p>
+        <p>I’m open to <b>freelance</b> or collaborative projects. If you’re looking for someone passionate about both design and development <a className='text-blue-600 dark:text-blue-400' href="https://shatlykabdullayev.com" target="_blank" rel="noopener">let’s connect</a></p>
       </section>
 
       <section className="mt-8 text-base text-slate-800 dark:text-gray-100">
         <Link
           href={'blog'}
-          className="group flex items-center gap-2 text-lg font-normal text-slate-600 dark:text-gray-400 mb-6 hover:text-slate-800 dark:hover:text-gray-100 transition-colors duration-200"
+          className="group h-10 leading-[100%] flex items-center gap-2 text-lg font-normal text-slate-600 dark:text-gray-400 mb-6 hover:text-slate-800 dark:hover:text-gray-100 transition-colors duration-200"
         >
-          Posts
-          <ChevronRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+          <span>Posts</span>
+          <span className='leading-0'>
+            <ChevronRight size={16} className=" leading-[100] transition-transform duration-200 group-hover:translate-x-1" />
+          </span>
         </Link>
         <div className="space-y-1">
           {(() => {
@@ -171,6 +173,7 @@ export function HomeContent({ posts }: HomeContentProps) {
 
       {showConfetti && (
         <Confetti
+          className='w-full'
           width={typeof window !== 'undefined' ? window.innerWidth : 300}
           height={typeof window !== 'undefined' ? window.innerHeight : 200}
           recycle={false}

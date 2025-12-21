@@ -196,13 +196,13 @@ export default async function PostPage({
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: `${siteMetadata.siteUrl}${'/en'}`,
+          item: `${siteMetadata.siteUrl}`,
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Blog',
-          item: `${siteMetadata.siteUrl}${'/en'}/blog`,
+          item: `${siteMetadata.siteUrl}/blog`,
         },
         {
           '@type': 'ListItem',
