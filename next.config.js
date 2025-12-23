@@ -17,6 +17,9 @@ const { withPlaiceholder } = require('@plaiceholder/next')
  **/
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    unoptimized: true,
+  },
   async redirects() {
     return [
       {

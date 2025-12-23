@@ -76,7 +76,7 @@ export default function RootLayout({
       </head>
       <body className={`${poppins.variable} ${lora.variable} font-sans`}>
         <Providers>{children}</Providers>
-        <Analytics />
+        {/* <Analytics /> */}
         <VercelAnalytics />
       </body>
     </html>
