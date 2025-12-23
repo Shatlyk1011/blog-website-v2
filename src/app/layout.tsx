@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   alternates: {
     types: {
       'application/rss+xml': [
-        { url: `${siteMetadata.siteUrl}/rss-en.xml`, title: 'RSS Feed - English' },
+        { url: `${siteMetadata.siteUrl}/rss.xml`, title: 'RSS Feed - English' },
       ],
     },
   },

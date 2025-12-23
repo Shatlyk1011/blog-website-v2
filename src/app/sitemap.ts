@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { MetadataRoute } from 'next'
 import { getPosts } from '@/utils/mdx'
 import siteMetadata from './siteMetadata'

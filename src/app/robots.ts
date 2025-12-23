@@ -46,7 +46,7 @@ export default function robots(): MetadataRoute.Robots {
         crawlDelay: 2,
       },
     ],
-    sitemap: 'https://blog.shatlykabdullayev.com/sitemap.xml',
+    sitemap: 'https://blog.shatlykabdullayev.com/',
     host: 'https://blog.shatlykabdullayev.com',
   }
 }

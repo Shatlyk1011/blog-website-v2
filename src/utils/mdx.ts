@@ -63,7 +63,7 @@ export function calculateWordCount(content: string): number {
 }
 
 export const getPosts = (): Post[] => {
-  const postsPath = path.join(process.cwd(), 'posts') // ✅ Absolute path
+  const postsPath = 'posts'
   const postFilePaths = fs
     .readdirSync(postsPath)
     // Only include md(x) files
