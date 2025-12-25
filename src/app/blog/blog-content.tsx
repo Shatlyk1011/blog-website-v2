@@ -42,7 +42,7 @@ export function BlogContent({ posts: p }: BlogContentProps) {
             publishedTime={post.data.publishedTime}
             image={
               post.data.image && {
-                src: `/static/images/${post.data.image.src}`,
+                src: `/static/images/${post.data.image.placeholder}`,
                 alt: post.data.image.alt || 'Card Hero',
                 blurDataURL: post.data.image.placeholder
                   ? `/static/images/${post.data.image.placeholder}`
