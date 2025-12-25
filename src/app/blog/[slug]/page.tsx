@@ -47,18 +47,12 @@ console.log('getPosts()', getPosts());
 
 export async function generateStaticParams() {
   try {
-    console.log('getPosts() called');
     const posts = getPosts();
-    console.log('getPosts() returned:', posts?.length || 0, 'posts');
-
     const params = posts.map((post) => ({
       slug: post.filePath.replace('.mdx', ''),
     }));
-    console.log('Generated params:', params);
     return params;
   } catch (error) {
-    console.error('generateStaticParams error:', error);
-    // Return empty array or fallback - build continues
     return [];
   }
 }

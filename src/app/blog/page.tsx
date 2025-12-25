@@ -10,15 +10,15 @@ export async function generateMetadata(): Promise<Metadata> {
   const canonicalUrl = `${siteMetadata.siteUrl}/blog`
 
   return {
-    title: 'title',
-    description: 'description',
+    title: siteMetadata.title,
+    description: siteMetadata.description,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
       url: canonicalUrl,
-      title: 'title',
-      description: 'description',
+      title: siteMetadata.title,
+      description: siteMetadata.description,
       locale: 'en_US',
       alternateLocale: 'en_US',
       images: [
