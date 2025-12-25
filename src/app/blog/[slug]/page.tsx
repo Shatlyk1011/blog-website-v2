@@ -190,7 +190,7 @@ export default async function PostPage({
       name: 'Shatlyk Abdullayev',
       logo: {
         '@type': 'ImageObject',
-        url: `${siteMetadata.siteUrl}/static/images/profile.png`,
+        url: `${siteMetadata.siteUrl}/static/seo/profile.png`,
         width: 460,
         height: 460,
       },

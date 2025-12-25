@@ -76,7 +76,7 @@ export function HomeContent({ posts }: HomeContentProps) {
 
           <div className="relative w-full h-full bg-neutral-50 dark:bg-black rounded-full p-0.5">
             <Image
-              src="/static/images/profile.png"
+              src="/static/seo/profile.png"
               alt="Shatlyks's profile picture"
               fill
               priority
@@ -106,7 +106,7 @@ export function HomeContent({ posts }: HomeContentProps) {
 
       <section className="mt-8 text-base text-slate-800 dark:text-gray-100">
         <Link
-          href={'blog'}
+          href={'/blog'}
           className="group h-10 leading-[100%] flex items-center gap-2 text-lg font-normal text-slate-600 dark:text-gray-400 mb-6 hover:text-slate-800 dark:hover:text-gray-100 transition-colors duration-200"
         >
           <span>Posts</span>

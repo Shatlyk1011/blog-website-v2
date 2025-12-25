@@ -50,7 +50,7 @@ export default async function IndexPage() {
     url: `${siteMetadata.siteUrl}`,
     image: {
       '@type': 'ImageObject',
-      url: `${siteMetadata.siteUrl}/static/images/profile.png`,
+      url: `${siteMetadata.siteUrl}/static/seo/profile.png`,
       width: 460,
       height: 460,
       caption: `${siteMetadata.author} Profile Picture`,
@@ -85,7 +85,7 @@ export default async function IndexPage() {
     '@id': `${siteMetadata.siteUrl}/#organization`,
     name: siteMetadata.authorShort,
     url: siteMetadata.siteUrl,
-    logo: `${siteMetadata.siteUrl}/static/images/profile.png`,
+    logo: `${siteMetadata.siteUrl}/static/seo/profile.png`,
     sameAs: [
       siteMetadata.website,
       siteMetadata.github,
@@ -105,7 +105,7 @@ export default async function IndexPage() {
     author: { '@id': `${siteMetadata.siteUrl}/#person` },
     image: {
       '@type': 'ImageObject',
-      url: `${siteMetadata.siteUrl}/static/images/profile.png`,
+      url: `${siteMetadata.siteUrl}/static/seo/profile.png`,
       width: 460,
       height: 460,
       caption: `${siteMetadata.author} Profile Picture`,

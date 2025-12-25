@@ -291,6 +291,17 @@
   font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
 }
 
+.prose h1 {
+  font-size: 3rem;
+}
+
+.prose h2 {
+  font-size: 2rem;
+}
+
+.prose h3 {
+  font-size: 1.6rem;
+}
 .prose h2 {
   position: relative;
   padding-bottom: 0.5rem;
