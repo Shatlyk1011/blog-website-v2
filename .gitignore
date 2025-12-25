@@ -2,16 +2,10 @@
 
 # Generated RSS feeds (created during build)
 rss.xml
-rss-pt.xml
-rss-en.xml
 
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
 
-# testing
-/coverage
 
 # next.js
 /.next/
@@ -79,5 +73,3 @@ sitemap-0.xml
 .env.development
 .env.staging
 .env.production
-
-/public
