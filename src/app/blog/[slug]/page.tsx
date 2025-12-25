@@ -1,3 +1,5 @@
+export const dynamic = 'force-dymamic'
+
 import { Layout, CodeBlock, Pre, MDXImage } from '@/components'
 import { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
