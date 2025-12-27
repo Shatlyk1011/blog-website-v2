@@ -1,4 +1,4 @@
-export const dynamic = 'force-dymamic'
+export const dynamic = 'force-dynamic'
 
 import { Layout, CodeBlock, Pre, MDXImage } from '@/components'
 import { Metadata } from 'next'
