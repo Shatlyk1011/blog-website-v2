@@ -464,6 +464,14 @@
   background: linear-gradient(90deg, #60a5fa, #93c5fd);
 }
 
+.prose table thead th {
+  padding-block: 4px;
+}
+
+.prose table tbody td {
+  border: 1px solid #fff8;
+  padding: 10px;
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;
