@@ -45,8 +45,6 @@ const mdxOptions: any = {
   ],
 }
 
-console.log('getPosts()', getPosts());
-
 export async function generateStaticParams() {
   try {
     const posts = getPosts();
