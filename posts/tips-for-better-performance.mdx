@@ -14,11 +14,11 @@ reactionsLength: 0
 commentsLength: 0
 ---
 
-## Speed Up Your Website: Simple Tips for Better Performance
+## Tips for Better Web Experience
 
 In this post, we’ll break down four key areas to improve your site’s speed: Core Web Vitals, lazy loading, code splitting, rendering strategies. Let’s dive in with simple explanations.
 
-## Core Web Vitals metrics
+### Core Web Vitals metrics
 
 Core Web Vitals are metrics that measure how fast a webpage loads, how quickly users can interact with it, and how visually stable it is. Optimizing these metrics will lead for better search rankings and a great user experience.
 
@@ -62,45 +62,41 @@ INP measures how quickly your site responds to user interactions, (clicking, tap
 
 > Check out Google’s [PageSpeed Insights](https://pagespeed.web.dev/?ref=blog.shatlykabdullayev.com) to test your site’s Core Web Vitals
 
-## Lazy Loading and Code Splitting: Load Only What You Need
 
-### Lazy Loading
+### Lazy Loading and Code Splitting
 
 Load only the content users need **right away**. Two great techniques for this are **lazy loading** and **code splitting**.
 
-Lazy loading delays loading images, videos, or other heavy content until they’re needed (like when a user scrolls down).
+**Lazy loading** delays loading images, videos, or other heavy content until they’re needed (like when a user scrolls down).
 
-#### How to Do It
+**Code splitting** breaks your JavaScript into smaller pieces so the browser only loads what’s needed for the current page.
+
+
+#### How to implement
 
 - **Use priority hints**: Add `fetchpriority` attribute to tell the browser which resources to load first.
 
 - **HTML attribute**: Add `loading="lazy"` to images in your HTML. Most modern browsers support this.
 
-### Code Splitting
-
-Code splitting breaks your JavaScript into smaller pieces so the browser only loads what’s needed for the current page.
-
-#### How to Do It
-
 - **Dynamic imports**: Use tools like Vite or Webpack to split code. For example, load a heavy charting library only when a user visits a data-heavy page. Frameworks like `React` or `Vue` have built-in code-splitting features.
 
-## Rendering Strategies: Picking the Right Approach
+### Rendering Strategies: Picking the Right Approach
 
 Loading contents right affects page speed. Here is common strategies, explained simply, with examples from real projects.
 
-### Client-Side Rendering (CSR)
+#### Client-Side Rendering (CSR)
 
 In CSR, the browser loads a basic page and uses JavaScript to fetch and display content (in client side). It’s great for **dynamic apps** but can be slow initially.
 
-### Server-Side Rendering (SSR)
+#### Server-Side Rendering (SSR)
 
 SSR sends a fully built page from the server, making the first load faster. It’s good for SEO and speed but this can put a load on the servers.
 
-### Static Site Generation (SSG)
+#### Static Site Generation (SSG)
 
 SSG creates pre-built pages at build time, making them super fast to load. It’s perfect for blogs or marketing sites.
 
-### Incremental Static Regeneration (ISR)
+#### Incremental Static Regeneration (ISR)
 
 ISR combines SSG’s speed with the ability to update pages without rebuilding the whole site. It’s great for sites with frequent updates.
 
