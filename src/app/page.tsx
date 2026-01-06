@@ -1,3 +1,4 @@
+import { ElementType } from 'react'
 import { Layout } from '@/components'
 import { Metadata } from 'next'
 import { getPosts } from '@/utils/mdx'

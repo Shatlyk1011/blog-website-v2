@@ -8,6 +8,7 @@ import { ChevronRight } from 'lucide-react'
 import Confetti from 'react-confetti'
 import { Post } from '@/utils/mdx'
 import { getYearsOfProfessionalExperience } from '@/constants'
+import siteMetadata from './siteMetadata'
 
 interface HomeContentProps {
   posts: Post[]
@@ -97,11 +98,10 @@ export function HomeContent({ posts }: HomeContentProps) {
       </div>
 
       <section className="text-sm font-normal font-sans mt-6 flex flex-col gap-4 text-gray-700 dark:text-gray-200">
-        <p>Hi, I’m Shatlyk, a freelance web developer and designer with over {years} years of experience crafting scalable, user-focused web applications. I specialize in building modern, responsive solutions using best practices.</p>
+        <p>Hi, I’m Shatlyk, a software engineer with 5+ years of experience building scalable, user-focused web applications. I specialize in modern, responsive solutions built with best practices.</p>
         <p>
-          Previously worked as a led frontend teams on large-scale projects, driving both performance enhancements and top-tier SEO results. Managed the entire development cycle—from initial concept and architecture through deployment and optimization.
+          I’ve led frontend teams on large-scale projects, improving performance and SEO, and managed the full development lifecycle from architecture to deployment. Open to freelance or collaborative projects. <a className='text-blue-600 dark:text-blue-400' href={siteMetadata.website} target="_blank" rel="noopener">Let’s connect</a> if you need someone who cares about both design and development.
         </p>
-        <p>I’m open to <b>freelance</b> or collaborative projects. If you’re looking for someone passionate about both design and development <a className='text-blue-600 dark:text-blue-400' href="https://shatlykabdullayev.com" target="_blank" rel="noopener">let’s connect</a></p>
       </section>
 
       <section className="mt-8 text-base text-slate-800 dark:text-gray-100">

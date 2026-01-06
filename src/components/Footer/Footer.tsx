@@ -27,10 +27,7 @@ export const Footer = ({
         href: '/blog',
         name: 'Blog',
       },
-      {
-        href: '/linktree',
-        name: 'Linktree',
-      },
+
       {
         href: siteMetadata.linkedin,
         name: 'LinkedIn',
@@ -46,6 +43,10 @@ export const Footer = ({
       {
         href: siteMetadata.instagram,
         name: 'Instagram',
+      },
+      {
+        href: '/linktree',
+        name: 'Linktree',
       },
     ],
     [],
