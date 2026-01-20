@@ -60,7 +60,7 @@ export function BlogPostNavigation({
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">
-                      {'previousArticle'}
+                      Previous Article
                     </p>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
                       {prevPost.title}
@@ -87,7 +87,7 @@ export function BlogPostNavigation({
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">
-                      {"nextArticle"}
+                      Next Article
                     </p>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
                       {nextPost.title}
