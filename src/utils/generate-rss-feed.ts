@@ -9,12 +9,11 @@ export const generateRssFeed = async () => {
       : 'https://blog.shatlykabdullayev.com'
 
   const posts = getPosts()
-  const prefix = '/'
 
   const feed = new RSS({
     title: 'Shatlyk Abdullayev, Blog and Thoughts',
     description: 'Content about technology and thoughts',
-    site_url: `${site_url}/${prefix}`,
+    site_url: site_url,
     feed_url: `${site_url}/rss.xml`,
     image_url: `${site_url}/favicon-32x32.png`,
     language: 'en-US',
@@ -26,7 +25,7 @@ export const generateRssFeed = async () => {
     feed.item({
       title: post.data.title,
       description: post.data.description,
-      url: `${site_url}/${prefix}blog/${post.filePath.replace('.mdx', '')}`,
+      url: `${site_url}/blog/${post.filePath.replace('.mdx', '')}`,
       date: post.data.publishedTime,
       categories: post.data.tags,
       author: 'Shatlyk Abdullayev',
