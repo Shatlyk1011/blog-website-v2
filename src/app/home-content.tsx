@@ -98,9 +98,11 @@ export function HomeContent({ posts }: HomeContentProps) {
       </div>
 
       <section className="text-sm font-normal font-sans mt-6 flex flex-col gap-4 text-gray-700 dark:text-gray-200">
-        <p>Hi, I’m Shatlyk, a software engineer with 5+ years of experience building scalable, user-focused web applications. I specialize in modern, responsive solutions built with best practices.</p>
         <p>
-          I’ve led frontend teams on large-scale projects, improving performance and SEO, and managed the full development lifecycle from architecture to deployment. Open to freelance or collaborative projects. <a className='text-blue-600 dark:text-blue-400' href={siteMetadata.website} target="_blank" rel="noopener">Let’s connect</a> if you need someone who cares about both design and development.
+          Hi, I’m Shatlyk, a software engineer with over five years of experience building scalable, user-focused web applications. I specialize in developing modern, responsive solutions using industry best practices and robust architectures.
+        </p>
+        <p>
+          My experience spans the full development lifecycle — from system design and architecture to fullstack development and app optimization. I’m open to  <a className='text-blue-600 dark:text-blue-400' href={`${siteMetadata.website}/contact`} target="_blank" rel="noopener">collaborative opportunities</a>.
         </p>
       </section>
 
