@@ -25,11 +25,11 @@ The lifecycle of an application begins with the developer building code. Once th
 
 As a system grows, its architecture needs to adapt to handle more traffic. That’s where scaling comes in.
 
-* Vertical Scaling: This involves upgrading the hardware of a single server machine, such as increasing its CPU or Storage capacity. While this can improve reliability, it often results in a single point of failure.
+* **Vertical Scaling**: This involves upgrading the hardware of a single server machine, such as increasing its CPU or Storage capacity. While this can improve reliability, it often results in a single point of failure.
 
-* Horizontal Scaling: This involves adding several servers to the infrastructure and using a load balancer to distribute traffic among them.
+* **Horizontal Scaling**: This involves adding several servers to the infrastructure and using a load balancer to distribute traffic among them.
 
-Imagine a small pizza shop. Horizontal scaling means opening a several more pizza shops nearby and having someone (like a load balancer) send customers to the shop with the shortest line. Vertical scaling means getting a faster, more powerful oven so you can bake pizzas quicker. The big oven works well but if it breaks, you can’t make pizzas. With multiple shops, even if one closes, the others can still serve customers.
+Imagine a small pizza shop. **Horizontal scaling** means opening a several more pizza shops nearby and having someone (like a load balancer) send customers to the shop with the shortest line. **Vertical scaling** means getting a faster, more powerful oven so you can bake pizzas quicker. The big oven works well but if it breaks, you can’t make pizzas. With multiple shops, even if one closes, the others can still serve customers.
 
 <img
   className="w-full"
@@ -70,8 +70,8 @@ A system is "tolerant" to "faults" if it can continue to operate even when a com
 
 To optimize the user experience, developers must balance two critical performance metrics.
 
-* Throughput: This measures the capacity of the server, or how many requests it can handle in a specific timeframe (e.g., 10 requests per second)
-* Latency: This measures the time it takes for an individual request to complete.
+* **Throughput**: This measures the capacity of the server, or how many requests it can handle in a specific timeframe (e.g., 10 requests per second)
+* **Latency**: This measures the time it takes for an individual request to complete.
 
 High latency is often caused by network issues or the **physical distance** of the user. To combat this, developers use **CDNs (Content Delivery Networks)** to reduce the distance between the data and the user, thereby lowering latency.
 
