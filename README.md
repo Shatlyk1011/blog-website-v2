@@ -4,7 +4,7 @@ This project contains the source code and content for my personal blog, where I 
 
 ## Credits
 
-This repository was created by using and adapting a blog starter kit from [next-js-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
+This project was originally forked from the [thayto.com](https://github.com/rafa-thayto/thayto.com/) repository.
 
 ## Demo
 
